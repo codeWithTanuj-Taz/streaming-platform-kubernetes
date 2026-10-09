@@ -130,3 +130,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Local Helm rendered manifests and secrets
+helm-rendered.yaml
+helm\streamingapp\values-local.yaml

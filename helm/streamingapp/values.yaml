@@ -1,0 +1,67 @@
+images:
+  auth:
+    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-auth
+    tag: "1.0.0"
+  streaming:
+    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-stream
+    tag: "1.0.0"
+  admin:
+    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-admin
+    tag: "1.0.0"
+  chat:
+    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-chat
+    tag: "1.0.0"
+  frontend:
+    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-frontend
+    tag: "1.0.2"
+  mongo:
+    repository: mongo
+    tag: "6"
+
+replicaCount:
+  auth: 2
+  streaming: 2
+  admin: 2
+  chat: 2
+  frontend: 2
+
+services:
+  auth:
+    port: 3001
+  streaming:
+    port: 3002
+  admin:
+    port: 3003
+  chat:
+    port: 3004
+  frontend:
+    port: 80
+  mongo:
+    port: 27017
+
+config:
+  mongoDatabase: streamingapp
+  mongoUri: mongodb://mongo:27017/streamingapp
+  clientUrls: "http://a7ff8648b4ecc437485f266f7caaa204-1595882757.us-east-1.elb.amazonaws.com"
+  awsRegion: us-east-1
+  awsS3Bucket: "streamingapp-videos-789193817635"
+  awsCdnUrl: ""
+  streamingPublicUrl: "http://a7ff8648b4ecc437485f266f7caaa204-1595882757.us-east-1.elb.amazonaws.com"
+
+secrets:
+  create: false
+  jwtSecret: ""
+  awsAccessKeyId: ""
+  awsSecretAccessKey: ""
+
+mongo:
+  storageSize: 5Gi
+  storageClass: gp2
+
+ingress:
+  enabled: true
+  className: nginx
+  host: a7ff8648b4ecc437485f266f7caaa204-1595882757.us-east-1.elb.amazonaws.com
+
+
+
