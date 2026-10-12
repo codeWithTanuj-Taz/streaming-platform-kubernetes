@@ -19,6 +19,7 @@ spec:
       labels:
         app: auth
     spec:
+      serviceAccountName: streamingapp-sa
       containers:
         - name: auth
           image: "{{ .Values.images.auth.repository }}:{{ .Values.images.auth.tag }}"
@@ -54,16 +55,6 @@ spec:
                 secretKeyRef:
                   name: streamingapp-secret
                   key: JWT_SECRET
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: streamingapp-secret
-                  key: AWS_ACCESS_KEY_ID
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: streamingapp-secret
-                  key: AWS_SECRET_ACCESS_KEY
           readinessProbe:
             httpGet:
               path: /health

@@ -19,6 +19,7 @@ spec:
       labels:
         app: chat
     spec:
+      serviceAccountName: streamingapp-sa
       containers:
         - name: chat
           image: "{{ .Values.images.chat.repository }}:{{ .Values.images.chat.tag }}"

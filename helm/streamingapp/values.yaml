@@ -1,19 +1,19 @@
-images:
+﻿images:
   auth:
-    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-auth
-    tag: "1.0.0"
+    repository: 945512081739.dkr.ecr.us-east-1.amazonaws.com/streaming-auth
+    tag: "latest"
   streaming:
-    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-stream
-    tag: "1.0.0"
+    repository: 945512081739.dkr.ecr.us-east-1.amazonaws.com/streaming-stream
+    tag: "latest"
   admin:
-    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-admin
-    tag: "1.0.0"
+    repository: 945512081739.dkr.ecr.us-east-1.amazonaws.com/streaming-admin
+    tag: "latest"
   chat:
-    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-chat
-    tag: "1.0.0"
+    repository: 945512081739.dkr.ecr.us-east-1.amazonaws.com/streaming-chat
+    tag: "latest"
   frontend:
-    repository: 789193817635.dkr.ecr.us-east-1.amazonaws.com/streaming-frontend
-    tag: "1.0.2"
+    repository: 945512081739.dkr.ecr.us-east-1.amazonaws.com/streaming-frontend
+    tag: "latest"
   mongo:
     repository: mongo
     tag: "6"
@@ -24,6 +24,10 @@ replicaCount:
   admin: 2
   chat: 2
   frontend: 2
+
+serviceAccount:
+  create: false
+  name: streamingapp-sa
 
 services:
   auth:
@@ -42,11 +46,11 @@ services:
 config:
   mongoDatabase: streamingapp
   mongoUri: mongodb://mongo:27017/streamingapp
-  clientUrls: "http://a7ff8648b4ecc437485f266f7caaa204-1595882757.us-east-1.elb.amazonaws.com"
+  clientUrls: "http://a730d998ac40c48d0bb871fd12c6b70a-1480195874.us-east-1.elb.amazonaws.com"
   awsRegion: us-east-1
-  awsS3Bucket: "streamingapp-videos-789193817635"
+  awsS3Bucket: "streamingappuploadswithyou-videos-789193817635"
   awsCdnUrl: ""
-  streamingPublicUrl: "http://a7ff8648b4ecc437485f266f7caaa204-1595882757.us-east-1.elb.amazonaws.com"
+  streamingPublicUrl: "http://a730d998ac40c48d0bb871fd12c6b70a-1480195874.us-east-1.elb.amazonaws.com"
 
 secrets:
   create: false
@@ -56,12 +60,13 @@ secrets:
 
 mongo:
   storageSize: 5Gi
-  storageClass: gp2
+  storageClass: gp3-csi
 
 ingress:
   enabled: true
   className: nginx
-  host: a7ff8648b4ecc437485f266f7caaa204-1595882757.us-east-1.elb.amazonaws.com
+  host: a730d998ac40c48d0bb871fd12c6b70a-1480195874.us-east-1.elb.amazonaws.com
+
 
 
 
